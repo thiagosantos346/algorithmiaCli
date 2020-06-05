@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Input from '../input';
@@ -6,23 +6,26 @@ import SwapButton from '../swapButton';
 import SelectorLanguage from '../selectorLanguage';
 import GroupButtons from '../groupButtons'
 
+import GroupButtonsContext from '../groupButtons/groupButtonsContext';
+
 import useStyles from './styles';
 
 export default function CenteredGrid() {
   const classes = useStyles();
+  const groupButtonsContext = useContext(GroupButtonsContext);
   const [soucerText, setSourceText] = useState();
   const [ swaped, setSwaped ] = useState(false);
   const [targetText, setTargetText] = useState();
 
   const [targetLanguage, setTargetLanguage] = useState({
-    lastOlder:'Portugues',
-    firstOlder:'Ingles',
+    lastOlder:'Português',
+    firstOlder:'Inglês',
     actual:'Francês',
   });
 
   const [sourceLanguage, setSourceLanguage] = useState({
-    lastOlder:'Portugues',
-    firstOlder:'Ingles',
+    lastOlder:'Português',
+    firstOlder:'Inglês',
     actual:'Francês',
   });
   
@@ -37,6 +40,7 @@ export default function CenteredGrid() {
 
   const handleSwapedClick = () => {
     let temp = targetLanguage;
+    
     setTargetLanguage(sourceLanguage);
     setSourceLanguage(temp);
     setSwaped(!swaped);

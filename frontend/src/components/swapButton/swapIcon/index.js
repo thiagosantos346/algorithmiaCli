@@ -4,7 +4,6 @@ import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import makeStyles from './styles';
 
 function swapIcon(props) {
-    const { swaped } = props;
     const classes = makeStyles(props);
     return (
         <SwapHorizIcon
